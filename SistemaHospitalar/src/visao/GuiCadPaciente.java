@@ -111,6 +111,7 @@ public class GuiCadPaciente extends javax.swing.JInternalFrame {
         jLayeredPane1.add(jtRG);
         jtRG.setBounds(140, 100, 210, 30);
 
+        jcConvenio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Amil", "SulAmérica", "Unimed", "Bradesco Saúde", "Medial Saúde", " " }));
         jLayeredPane1.add(jcConvenio);
         jcConvenio.setBounds(140, 300, 150, 30);
 
@@ -177,7 +178,7 @@ public class GuiCadPaciente extends javax.swing.JInternalFrame {
             pac.setRg(jtRG.getText());
 
             // Verificando se um convênio foi selecionado no JComboBox
-            if (!(jcConvenio.getSelectedIndex() == 0)) {
+            if (jcConvenio.getSelectedIndex() != 0) {
 
                 // Obtendo o nome do convênio selecionado pelo usuário
                 String conv = jcConvenio.getSelectedItem().toString();
@@ -190,22 +191,22 @@ public class GuiCadPaciente extends javax.swing.JInternalFrame {
 
                 // Atribuindo o ID do convênio ao paciente
                 pac.setConvenio(convenio.getIdConvenio());
-
-            } else {
-                JOptionPane.showMessageDialog(this,
-                        "Selecione um produto");
-            } // fecha else
-
-           // Criando objeto PacienteDAO para cadastrar o paciente no banco de dados
+                
+                // Criando objeto PacienteDAO para cadastrar o paciente no banco de dados
             PacienteDAO pacDAO = new PacienteDAO();
             pacDAO.cadastrarPaciente(pac);
 
             // Mensagem de sucesso
             JOptionPane.showMessageDialog(this, "Paciente cadastrado com sucesso!");
 
+            } else {
+                JOptionPane.showMessageDialog(this,"Selecione um convênio");
+            } // fecha else
+
+           
+
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this,
-                    "ERRO! " + e.getMessage());
+            JOptionPane.showMessageDialog(this,"ERRO! " + e.getMessage());
         } // fecha catch
 
     }// fecha método
@@ -215,6 +216,10 @@ public class GuiCadPaciente extends javax.swing.JInternalFrame {
         jtNome.setText("");
         jtEndereco.setText("");
         jtCpf.setText("");
+        jtDataNasc.setText("");
+        jtTelefone.setText("");
+        jtRG.setText("");
+        jtEmail1.setText("");
     }// fecha método
 
     
@@ -229,10 +234,10 @@ public class GuiCadPaciente extends javax.swing.JInternalFrame {
              * Criando um ArrayList<ProdutoVO> vazio
              * para receber o ArrayList com os dados
              */
-            ArrayList<Convenio> p = new ArrayList<>();
+            ArrayList<Convenio> p = ps.buscarConvenio();
 
             // Recebendo o ArrayList cheio em produtos
-            p = ps.buscarConvenio();
+            
 
             // Adicionando os dados do ArrayList no JComboBox
             jcConvenio.addItem("-Selecione-");
@@ -244,8 +249,7 @@ public class GuiCadPaciente extends javax.swing.JInternalFrame {
             } // fecha for
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this,
-                    "Erro! " + e.getMessage());
+            JOptionPane.showMessageDialog(this,"Erro! " + e.getMessage());
         } // fecha catch
     }// fecha classe
 

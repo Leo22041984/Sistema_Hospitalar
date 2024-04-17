@@ -69,6 +69,7 @@ CREATE TABLE `convenio` (
   PRIMARY KEY (`ID_CONVENIO`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+select * from convenio;
 
 --
 -- Dumping data for table `convenio`
@@ -178,7 +179,7 @@ CREATE TABLE `paciente` (
   CONSTRAINT `fk_PACIENTE_CONVENIO1` FOREIGN KEY (`ID_CONVENIO_FK`) REFERENCES `convenio` (`ID_CONVENIO`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
+select * from paciente;
 --
 -- Dumping data for table `paciente`
 --

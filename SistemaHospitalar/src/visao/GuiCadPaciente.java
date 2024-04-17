@@ -111,7 +111,8 @@ public class GuiCadPaciente extends javax.swing.JInternalFrame {
         jLayeredPane1.add(jtRG);
         jtRG.setBounds(140, 100, 210, 30);
 
-        jcConvenio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Amil", "SulAmérica", "Unimed", "Bradesco Saúde", "Medial Saúde", " " }));
+        jcConvenio.setMaximumRowCount(4);
+        jcConvenio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
         jLayeredPane1.add(jcConvenio);
         jcConvenio.setBounds(140, 300, 150, 30);
 
